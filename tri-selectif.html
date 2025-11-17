@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tri sélectif | Green Collector</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #24301b;
+            background: #eef4e7;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #35681d 0%, #6aa332 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "♻";
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        .hero {
+            background: linear-gradient(120deg, rgba(53, 104, 29, 0.88), rgba(106, 163, 50, 0.78)),
+                        url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1400&q=80') center/cover;
+            color: white;
+            text-align: center;
+            padding: 145px 1.5rem 110px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            max-width: 760px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+
+        .section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem 3rem;
+        }
+
+        .section h2 {
+            font-size: 2.4rem;
+            color: #2d5016;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section p.lead {
+            text-align: center;
+            max-width: 820px;
+            margin: 0 auto 2.5rem;
+            color: #4f5a40;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 16px 40px rgba(21, 57, 24, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 22px 50px rgba(21, 57, 24, 0.18);
+        }
+
+        .card img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .tag {
+            align-self: flex-start;
+            background: rgba(53, 104, 29, 0.12);
+            color: #35681d;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            color: #1f3d10;
+        }
+
+        .card ul {
+            list-style: none;
+            color: #4f4f4f;
+        }
+
+        .card li {
+            position: relative;
+            padding-left: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: #4a7c2c;
+        }
+
+        .status {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #c2410c;
+        }
+
+        .cta {
+            display: inline-block;
+            margin-top: auto;
+            padding: 0.85rem 1.6rem;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #2d5016, #4a7c2c);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(45, 80, 22, 0.25);
+        }
+
+        footer {
+            background: #233417;
+            color: white;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: #a8d371;
+            text-decoration: none;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="logo" href="index.html">Green Collector</a>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="cendriers.html">Cendriers</a></li>
+                <li><a href="tri-selectif.html">Tri sélectif</a></li>
+                <li><a href="hygiene.html">Hygiène</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Stations de tri sélectif</h1>
+        <p>Composez des points de tri efficaces et esthétiques pour encourager les bons gestes de recyclage dans vos espaces professionnels.</p>
+    </section>
+
+    <section class="section">
+        <h2>Solutions de tri inspirées du catalogue Green CF</h2>
+        <p class="lead">Une sélection de collecteurs performants repérés sur <strong>greencf.cluster100.hosting.ovh.net</strong> pour structurer votre tri des déchets ménagers ou professionnels.</p>
+
+        <div class="cards">
+            <div class="card">
+                <img src="http://greencf.cluster100.hosting.ovh.net/9/collecteur-bio-dechet-20-litres.jpg" alt="Collecteur bio-déchet 20 litres">
+                <div class="card-content">
+                    <span class="tag">Bio-déchets</span>
+                    <h3>Collecteur bio-déchet 20&nbsp;L</h3>
+                    <p class="status">Disponibilité : sur demande</p>
+                    <ul>
+                        <li>Poignée rabattable verrouillant le couvercle durant le transport</li>
+                        <li>Empilable et emboîtable pour optimiser le stockage</li>
+                        <li>Angles arrondis pour un nettoyage rapide</li>
+                    </ul>
+                    <a class="cta" href="http://greencf.cluster100.hosting.ovh.net/accueil/3-collecteur-bio-dechet-20-litres.html" target="_blank" rel="noopener">Voir la fiche produit</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="http://greencf.cluster100.hosting.ovh.net/51/collecteur-modulaire-anti-feu-51l-carre-ref-se-4040-bla.jpg" alt="Collecteur modulaire anti-feu 51 litres">
+                <div class="card-content">
+                    <span class="tag">Station modulaire</span>
+                    <h3>Collecteur anti-feu 51&nbsp;L</h3>
+                    <p class="status">Minimum de commande : 4 unités</p>
+                    <ul>
+                        <li>Certifié TÜV pour la résistance au feu</li>
+                        <li>Ouverture sans contact Ø 11&nbsp;cm</li>
+                        <li>Pieds réglables pour alignement parfait</li>
+                    </ul>
+                    <a class="cta" href="http://greencf.cluster100.hosting.ovh.net/accueil/19-collecteur-modulaire-anti-feu-51l-carre-ref-se-4040-bla.html" target="_blank" rel="noopener">Voir la fiche produit</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1611043716166-60be96d62238?auto=format&fit=crop&w=1200&q=80" alt="Collecteur à pédale 30 litres">
+                <div class="card-content">
+                    <span class="tag">Collecte en intérieur</span>
+                    <h3>Collecteur à pédale 30&nbsp;L</h3>
+                    <p class="status">Disponible en plusieurs coloris</p>
+                    <ul>
+                        <li>Ouverture silencieuse et hygiénique sans contact</li>
+                        <li>Polypropylène professionnel, facile à désinfecter</li>
+                        <li>Livré avec kit d'autocollants de tri</li>
+                    </ul>
+                    <a class="cta" href="http://greencf.cluster100.hosting.ovh.net/accueil/11-collecteur-a-pedale-30l.html" target="_blank" rel="noopener">Voir la fiche produit</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Green Collector &middot; <a href="mailto:contact@green-collector.com">contact@green-collector.com</a></p>
+    </footer>
+</body>
+</html>
