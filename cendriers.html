@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cendriers | Green Collector</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2b2b2b;
+            background: #f4f7f1;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2d5016 0%, #4a7c2c 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "♻";
+            font-size: 1.8rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, rgba(45, 80, 22, 0.9), rgba(74, 124, 44, 0.85)),
+                        url('https://images.unsplash.com/photo-1500839941678-aae14dbfae74?auto=format&fit=crop&w=1400&q=80') center/cover;
+            color: white;
+            text-align: center;
+            padding: 140px 1.5rem 110px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+        }
+
+        .section {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .section h2 {
+            font-size: 2.4rem;
+            color: #2d5016;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section p.lead {
+            text-align: center;
+            max-width: 780px;
+            margin: 0 auto 2.5rem;
+            color: #555;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 14px 35px rgba(15, 49, 18, 0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(15, 49, 18, 0.18);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .tag {
+            align-self: flex-start;
+            background: rgba(74, 124, 44, 0.12);
+            color: #2d5016;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            color: #1f3d10;
+        }
+
+        .card ul {
+            list-style: none;
+            color: #4f4f4f;
+        }
+
+        .card li {
+            position: relative;
+            padding-left: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: #4a7c2c;
+        }
+
+        .status {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #c2410c;
+        }
+
+        .cta {
+            display: inline-block;
+            margin-top: auto;
+            padding: 0.85rem 1.6rem;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #2d5016, #4a7c2c);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(45, 80, 22, 0.25);
+        }
+
+        footer {
+            background: #1a2f0f;
+            color: white;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: #a5d06c;
+            text-decoration: none;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a class="logo" href="index.html">Green Collector</a>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="cendriers.html">Cendriers</a></li>
+                <li><a href="tri-selectif.html">Tri sélectif</a></li>
+                <li><a href="hygiene.html">Hygiène</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Cendriers professionnels</h1>
+        <p>Des solutions robustes et esthétiques pour maintenir vos espaces extérieurs impeccables tout en facilitant la collecte des mégots.</p>
+    </section>
+
+    <section class="section">
+        <h2>Notre sélection de cendriers</h2>
+        <p class="lead">Ces modèles sont issus du catalogue <strong>greencf.cluster100.hosting.ovh.net</strong> et répondent aux exigences des collectivités, entreprises et lieux publics.</p>
+
+        <div class="cards">
+            <div class="card">
+                <img src="http://greencf.cluster100.hosting.ovh.net/2/borne-cendrier-xi.jpg" alt="Borne Cendrier XI">
+                <div class="card-content">
+                    <span class="tag">Colonne extérieure</span>
+                    <h3>Borne Cendrier XI</h3>
+                    <p class="status">Disponibilité : sur commande</p>
+                    <ul>
+                        <li>Conçue pour les zones à forte fréquentation</li>
+                        <li>Bac intérieur amovible pour un vidage rapide</li>
+                        <li>Structure galbée résistante aux intempéries</li>
+                    </ul>
+                    <a class="cta" href="http://greencf.cluster100.hosting.ovh.net/accueil/1-borne-cendrier-xi.html" target="_blank" rel="noopener">Voir la fiche produit</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="http://greencf.cluster100.hosting.ovh.net/13/cendrier-sur-pied-125l-totem.jpg" alt="Cendrier sur pied Totem">
+                <div class="card-content">
+                    <span class="tag">Totem double face</span>
+                    <h3>Cendrier sur pied 12,5&nbsp;L TOTEM</h3>
+                    <p class="status">Exclusivité web</p>
+                    <ul>
+                        <li>Finition époxy anti-UV sur acier galvanisé</li>
+                        <li>Entonnoir intérieur pour étouffer les fumées</li>
+                        <li>Kit de fixation au sol et clé fournie</li>
+                    </ul>
+                    <a class="cta" href="http://greencf.cluster100.hosting.ovh.net/accueil/4-cendrier-sur-pied-125l-totem.html" target="_blank" rel="noopener">Voir la fiche produit</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="http://greencf.cluster100.hosting.ovh.net/4/cendrier-poubelle-asla.jpg" alt="Cendrier poubelle ASLA">
+                <div class="card-content">
+                    <span class="tag">Fixation mobilier</span>
+                    <h3>Cendrier poubelle ASLA</h3>
+                    <p class="status">Disponibilité : sur demande</p>
+                    <ul>
+                        <li>Design évocateur avec message anti-mégots</li>
+                        <li>Installation rapide sur support existant</li>
+                        <li>Capacité 0,5&nbsp;L (≈300 mégots)</li>
+                    </ul>
+                    <a class="cta" href="http://greencf.cluster100.hosting.ovh.net/accueil/2-cendrier-poubelle-asla.html" target="_blank" rel="noopener">Voir la fiche produit</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Green Collector &middot; <a href="mailto:contact@green-collector.com">contact@green-collector.com</a></p>
+    </footer>
+</body>
+</html>
