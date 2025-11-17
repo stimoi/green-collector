@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Collector - Solutions de Gestion des Déchets</title>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -114,6 +118,31 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
+        .hero-nav {
+            display: inline-flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-nav a {
+            padding: 0.75rem 1.6rem;
+            border-radius: 999px;
+            border: 2px solid rgba(255,255,255,0.7);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            backdrop-filter: blur(6px);
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .hero-nav a:hover {
+            background: white;
+            color: #2d5016;
+            border-color: white;
+        }
+
         /* Categories Section */
         .categories {
             padding: 4rem 2rem;
@@ -125,6 +154,14 @@
             font-size: 2.5rem;
             color: #2d5016;
             margin-bottom: 3rem;
+        }
+
+        .section-intro {
+            max-width: 720px;
+            margin: 0 auto 2rem;
+            text-align: center;
+            color: #4a4a4a;
+            font-size: 1.05rem;
         }
 
         .category-grid {
@@ -143,6 +180,9 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
 
         .category-card:hover {
@@ -163,6 +203,133 @@
 
         .category-card p {
             color: #666;
+        }
+
+        .category-action {
+            display: inline-block;
+            margin-top: auto;
+            padding: 0.6rem 1.4rem;
+            border-radius: 999px;
+            border: 2px solid #2d5016;
+            color: #2d5016;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .category-action:hover {
+            background: #2d5016;
+            color: white;
+        }
+
+        /* Product Highlight Section */
+        .product-section {
+            padding: 4rem 2rem;
+        }
+
+        .product-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 18px;
+            padding: 2.2rem 2rem;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid #4a7c2c;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::after {
+            content: "";
+            position: absolute;
+            inset: auto -30px -30px auto;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle at center, rgba(74, 124, 44, 0.15), transparent 70%);
+            z-index: 0;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 18px 45px rgba(45, 80, 22, 0.15);
+        }
+
+        .product-card .tag {
+            display: inline-block;
+            background: rgba(74, 124, 44, 0.12);
+            color: #2d5016;
+            padding: 0.35rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .product-card h3 {
+            color: #1f3d10;
+            margin-bottom: 0.75rem;
+            font-size: 1.4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-card p {
+            color: #4a4a4a;
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-card li {
+            color: #555;
+            padding-left: 1.5rem;
+            margin-bottom: 0.6rem;
+            position: relative;
+        }
+
+        .product-card li::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: #4a7c2c;
+        }
+
+        .product-link {
+            display: inline-block;
+            padding: 0.8rem 1.6rem;
+            background: linear-gradient(135deg, #2d5016, #4a7c2c);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(45, 80, 22, 0.25);
+        }
+
+        .status {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: #d97706;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
         }
 
         /* Features Section */
@@ -201,6 +368,72 @@
             color: #2d5016;
             margin-bottom: 0.5rem;
             font-size: 1.2rem;
+        }
+
+        /* Promotions */
+        .promotions {
+            padding: 4rem 2rem;
+            background: #f1f7ed;
+        }
+
+        .promo-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .promo-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border-left: 4px solid #d97706;
+            position: relative;
+        }
+
+        .promo-card .discount {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: #d97706;
+            color: white;
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .promo-card h3 {
+            color: #1f3d10;
+            margin-bottom: 0.8rem;
+        }
+
+        .promo-card p {
+            color: #4a4a4a;
+            margin-bottom: 1rem;
+        }
+
+        .promo-card ul {
+            padding-left: 1.2rem;
+            color: #4f4f4f;
+            margin-bottom: 1.2rem;
+        }
+
+        .promo-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .promo-card .product-link {
+            background: transparent;
+            color: #2d5016;
+            border: 2px solid #2d5016;
+        }
+
+        .promo-card .product-link:hover {
+            background: #2d5016;
+            color: white;
         }
 
         /* CTA Section */
@@ -317,59 +550,152 @@
         <nav>
             <div class="logo">Green Collector</div>
             <ul>
-                <li><a href="#accueil">Accueil</a></li>
-                <li><a href="#produits">Produits</a></li>
-                <li><a href="#solutions">Solutions</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="cendriers.html">Cendriers</a></li>
+                <li><a href="tri-selectif.html">Tri sélectif</a></li>
+                <li><a href="hygiene.html">Hygiène</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
+    <section class="hero" id="accueil">
         <div class="hero-content">
             <h1>Solutions Complètes de Gestion des Déchets</h1>
             <p>Poubelles, conteneurs, cendriers et équipements professionnels pour un environnement plus propre</p>
             <a href="#produits" class="cta-button">Découvrir notre catalogue</a>
+            <div class="hero-nav">
+                <a href="#produits">Catalogue</a>
+                <a href="#solutions">Solutions</a>
+                <a href="#promotions">Promotions</a>
+                <a href="#contact">Contact</a>
+            </div>
         </div>
     </section>
 
     <section class="categories" id="produits">
         <h2 class="section-title">Notre Gamme de Produits</h2>
+        <p class="section-intro">Découvrez une sélection d'équipements identifiés sur <strong>greencf.cluster100.hosting.ovh.net</strong> : cendriers design, collecteurs bio-déchets, solutions modulaires anti-feu et accessoires d'hygiène pour professionnels.</p>
         <div class="category-grid">
             <div class="category-card">
                 <div class="category-icon">🗑️</div>
                 <h3>Poubelles & Conteneurs</h3>
                 <p>Large gamme de poubelles intérieures et extérieures pour tous les besoins</p>
+                <a class="category-action" href="tri-selectif.html">Voir la catégorie</a>
             </div>
             <div class="category-card">
                 <div class="category-icon">🚬</div>
                 <h3>Cendriers</h3>
                 <p>Cendriers muraux, sur pied et design pour espaces publics et privés</p>
+                <a class="category-action" href="cendriers.html">Voir la catégorie</a>
             </div>
             <div class="category-card">
                 <div class="category-icon">♻️</div>
                 <h3>Tri Sélectif</h3>
                 <p>Solutions de tri pour recyclage et gestion éco-responsable</p>
+                <a class="category-action" href="tri-selectif.html">Voir la catégorie</a>
             </div>
             <div class="category-card">
                 <div class="category-icon">🏢</div>
                 <h3>Solutions Pro</h3>
                 <p>Équipements pour collectivités, entreprises et espaces publics</p>
+                <a class="category-action" href="#solutions">Voir nos services</a>
             </div>
             <div class="category-card">
                 <div class="category-icon">🏠</div>
                 <h3>Usage Domestique</h3>
                 <p>Produits adaptés aux particuliers et petits espaces</p>
+                <a class="category-action" href="#produits">Explorer</a>
             </div>
             <div class="category-card">
                 <div class="category-icon">🔧</div>
                 <h3>Accessoires</h3>
                 <p>Sacs, pinces, supports et tous les accessoires nécessaires</p>
+                <a class="category-action" href="hygiene.html">Voir la catégorie</a>
             </div>
         </div>
     </section>
 
-    <section class="features">
+    <section class="product-section">
+        <div class="section-intro">
+            <p>Les produits suivants sont mis à l'honneur pour leur qualité professionnelle et leurs fonctionnalités adaptées aux collectivités, entreprises et espaces publics.</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <span class="tag">Cendriers</span>
+                <h3>Borne Cendrier XI</h3>
+                <p>Colonne élégante pensée pour sécuriser et centraliser la collecte des mégots dans vos espaces extérieurs.</p>
+                <span class="status">Disponibilité : sur commande</span>
+                <ul>
+                    <li>Design professionnel compatible avec les zones à forte fréquentation</li>
+                    <li>Structure robuste pour résister aux conditions extérieures</li>
+                    <li>Nettoyage rapide grâce à un bac intérieur accessible</li>
+                </ul>
+                <a class="product-link" href="http://greencf.cluster100.hosting.ovh.net/accueil/1-borne-cendrier-xi.html" target="_blank" rel="noopener">Voir la fiche produit</a>
+            </div>
+            <div class="product-card">
+                <span class="tag">Cendriers</span>
+                <h3>Cendrier sur pied 12,5L TOTEM</h3>
+                <p>Une solution premium Probbax® avec accès double face, idéale pour les lieux très fréquentés.</p>
+                <span class="status">Exclusivité web</span>
+                <ul>
+                    <li>Acier galvanisé avec finition époxy anti-UV</li>
+                    <li>Entonnoir intérieur pour étouffer rapidement les fumées</li>
+                    <li>Kit de fixation au sol et bac amovible fournis</li>
+                </ul>
+                <a class="product-link" href="http://greencf.cluster100.hosting.ovh.net/accueil/4-cendrier-sur-pied-125l-totem.html" target="_blank" rel="noopener">Voir la fiche produit</a>
+            </div>
+            <div class="product-card">
+                <span class="tag">Cendriers</span>
+                <h3>Cendrier poubelle ASLA</h3>
+                <p>Cendrier compact à fixer sur mobilier : design évocateur et manipulation intuitive.</p>
+                <span class="status">Disponibilité : sur demande</span>
+                <ul>
+                    <li>Capacité de 0,5&nbsp;L soit environ 300 mégots</li>
+                    <li>Fermeture sécurisée par bouton et vis de fixation</li>
+                    <li>Couleurs personnalisables pour s'intégrer à vos aménagements</li>
+                </ul>
+                <a class="product-link" href="http://greencf.cluster100.hosting.ovh.net/accueil/2-cendrier-poubelle-asla.html" target="_blank" rel="noopener">Voir la fiche produit</a>
+            </div>
+            <div class="product-card">
+                <span class="tag">Tri sélectif</span>
+                <h3>Collecteur bio-déchet 20&nbsp;L</h3>
+                <p>Collecteur empilable spécialement pensé pour les bio-déchets en restauration ou bureaux.</p>
+                <span class="status">Disponibilité : sur demande</span>
+                <ul>
+                    <li>Poignée rabattable verrouillant le couvercle pendant le transport</li>
+                    <li>Angle arrondi pour un nettoyage facilité</li>
+                    <li>Couvercle articulé sur plus de 270&nbsp;° avec charnières robustes</li>
+                </ul>
+                <a class="product-link" href="http://greencf.cluster100.hosting.ovh.net/accueil/3-collecteur-bio-dechet-20-litres.html" target="_blank" rel="noopener">Voir la fiche produit</a>
+            </div>
+            <div class="product-card">
+                <span class="tag">Tri multi-flux</span>
+                <h3>Collecteur modulaire anti-feu 51&nbsp;L</h3>
+                <p>Conteneur haut de gamme certifié TÜV* idéal pour composer des stations de tri personnalisées.</p>
+                <span class="status">Minimum de commande : 4 unités</span>
+                <ul>
+                    <li>Acier galvanisé laqué époxy, compatible collecte sans contact</li>
+                    <li>Pieds réglables pour un alignement parfait sur sols irréguliers</li>
+                    <li>Module combinable pour créer une station complète</li>
+                </ul>
+                <a class="product-link" href="http://greencf.cluster100.hosting.ovh.net/accueil/19-collecteur-modulaire-anti-feu-51l-carre-ref-se-4040-bla.html" target="_blank" rel="noopener">Voir la fiche produit</a>
+            </div>
+            <div class="product-card">
+                <span class="tag">Hygiène &amp; entretien</span>
+                <h3>Porte-sac à pince 110&nbsp;L – 2 roues</h3>
+                <p>Support mobile avec pince pour la collecte des déchets sans contact manuel.</p>
+                <span class="status">Offre spéciale</span>
+                <ul>
+                    <li>Pince portefeuille avec bande caoutchouc anti-déchirure</li>
+                    <li>Plateforme et arceaux latéraux pour stabiliser le sac</li>
+                    <li>Large pédale robuste pour ouverture mains libres</li>
+                </ul>
+                <a class="product-link" href="http://greencf.cluster100.hosting.ovh.net/hygiene/21-porte-sac-a-pince-110l-2-roues-ref-so-2104-msstl.html" target="_blank" rel="noopener">Voir la fiche produit</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="solutions">
         <h2 class="section-title">Pourquoi Choisir Green Collector ?</h2>
         <div class="features-grid">
             <div class="feature">
@@ -391,6 +717,46 @@
                 <div class="feature-icon">📞</div>
                 <h4>Service Client</h4>
                 <p>Équipe dédiée pour vous conseiller</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="promotions" id="promotions">
+        <h2 class="section-title">Promotions repérées</h2>
+        <p class="section-intro">Des remises ponctuelles observées sur le site marchand. Contactez-nous pour vérifier la disponibilité et obtenir un devis personnalisé.</p>
+        <div class="promo-grid">
+            <div class="promo-card">
+                <span class="discount">-100&nbsp;€</span>
+                <h3>Collecteur modulaire anti-feu 51&nbsp;L</h3>
+                <p>Créez un point de tri premium résistant au feu, idéal pour les halls et open spaces.</p>
+                <ul>
+                    <li>Dépôt sans contact grâce à l'ouverture Ø 11&nbsp;cm</li>
+                    <li>Compatible tri sélectif multi-flux</li>
+                    <li>Pieds réglables pour un alignement parfait</li>
+                </ul>
+                <a class="product-link" href="http://greencf.cluster100.hosting.ovh.net/accueil/19-collecteur-modulaire-anti-feu-51l-carre-ref-se-4040-bla.html" target="_blank" rel="noopener">Voir la promotion</a>
+            </div>
+            <div class="promo-card">
+                <span class="discount">-20&nbsp;€</span>
+                <h3>Porte-sac à pince 110&nbsp;L – 2 roues</h3>
+                <p>Collecte mobile avec maintien optimal du sac et pédale mains libres.</p>
+                <ul>
+                    <li>Pince portefeuille avec bande caoutchoutée</li>
+                    <li>Plateforme et arceaux latéraux anti-déchirure</li>
+                    <li>Structure roulante simple à déplacer</li>
+                </ul>
+                <a class="product-link" href="http://greencf.cluster100.hosting.ovh.net/hygiene/21-porte-sac-a-pince-110l-2-roues-ref-so-2104-msstl.html" target="_blank" rel="noopener">Voir la promotion</a>
+            </div>
+            <div class="promo-card">
+                <span class="discount">-30&nbsp;€</span>
+                <h3>Distributeur de papier 200&nbsp;m</h3>
+                <p>Distribution hygiénique grand volume pour sanitaires très fréquentés.</p>
+                <ul>
+                    <li>Format grande capacité compatible rouleaux 200&nbsp;m</li>
+                    <li>Conception robuste pour usage professionnel</li>
+                    <li>Idéal en complément de vos stations d'hygiène</li>
+                </ul>
+                <a class="product-link" href="http://greencf.cluster100.hosting.ovh.net/accueil/17-distributeur-de-papier-200m-ref-pd-3022-ssstl.html" target="_blank" rel="noopener">Voir la promotion</a>
             </div>
         </div>
     </section>
